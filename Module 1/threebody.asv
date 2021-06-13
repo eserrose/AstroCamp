@@ -30,8 +30,8 @@ function ds = threebody(~, S, mu_earth, mu_moon)
     
     a_earth      = -(mu_moon/norm(rmoon_earth)^3)*rmoon_earth; 
     a_moon       = -(mu_earth/norm(rearth_moon)^3)*rearth_moon; 
-    a_spacecraft = -(mu_earth/norm(rearth_spacecraft)^3)*rearth_spacecraft ...
-                   -(mu_moon/norm(rmoon_spacecraft)^3)*rmoon_spacecraft;
+    a_spacecraft = -(mu_earth/norm(rearth_spacecraft)^3)*rearth_spacecraft
+                   -(mu_moon/norm(rmoon_earth)^3)*rmoon_earth
     % solving for acceleration vectors for Earth, Moon, and spacecraft using three body motion
     
     ds = zeros(18,1); % [km/s; km/s^2]

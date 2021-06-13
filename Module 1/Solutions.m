@@ -23,4 +23,29 @@ axis equal
 legend('Two-body Motion')
 
 format longG
-S_final = round(S(:,end),5)
+S_final_two = round(S(:,end),5)
+
+%------------------------------------------%
+%-------------- Question 2 ----------------%
+%------------------------------------------%
+mu_moon = 4902.8;
+S0 = [-4677.975; 0; 0; 380322.025; 0; 0; -(7327.031+4677.975); -813.869; 0; 
+      0; -0.013; 0; 0; 1.012; 0; 1.137; -(10.237+0.013); 0];
+
+[t,S] = ode45(@(t,S)threebody(t, S, mu, mu_moon), tspan, S0, options);
+
+S = S';
+R = S(7:9, :) - S(1:3,:);
+a = S(16:18,:)- S(10:12,:);
+
+hold on
+plot_orbit(R, 'k')
+plot_earth
+title('Three-body Orbit')
+xlabel('km')
+ylabel('km')
+zlabel('km')
+axis equal
+legend('Three-body Motion')
+
+S_final_three = round([R(:,end);a(:,end)],5)

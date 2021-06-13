@@ -4,6 +4,9 @@
 % @param ~ - Time step (unused)
 % @param S - Initial state vector [x y z vx vy vz]
 % @param mu - Gravitational parameter
+% 
+% @return ds - State derivative vector [vx vy vz ax ay az]
+%------------------------------------------
 function ds = twobody(~, S, mu)    
     
     r = S(1:3); % FILL IN VALUE
