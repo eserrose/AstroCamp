@@ -12,6 +12,7 @@ options = odeset('RelTol', 1e-10);
 S = S';
 R = S(1:3, :);
 
+f1 = figure;
 hold on
 plot_orbit(R, 'k')
 plot_earth
@@ -38,6 +39,7 @@ S = S';
 R = S(7:9, :) - S(1:3,:);
 a = S(16:18,:)- S(10:12,:);
 
+f2 = figure;
 hold on
 plot_orbit(R, 'k')
 plot_earth
@@ -63,3 +65,25 @@ R0 = [-(7327.031+4677.975); -813.869; 0];
 V0 = ([1.137; -(10.237+0.013); 0] -  cross([0; 0; 1/t_star], R0)); %inertial to rotating
 S0_nodim = [R0/l_star; V0/v_star];
 tspan_nodim = tspan/t_star;
+
+%------------------------------------------%
+%-------------- Question 4 ----------------%
+%------------------------------------------%
+
+[t,S] = ode45(@(t,S)CR3BP(t, S, mu_star), tspan_nodim, S0_nodim, options);
+
+S = S';
+R = S(1:3, :);
+
+f3 = figure;
+hold on
+plot_orbit(R, 'k')
+plot_orbit([-4677.975; 0; 0]/l_star, '.')
+plot_orbit([380322.025; 0; 0]/l_star, '.')
+title('Orbit in Non-Dimensional System')
+xlabel('l*')
+ylabel('l*')
+axis equal
+legend('Satellite Orbit in Circular Three Body Problem','Earth','Moon')
+
+S_final_CR3BP = round(S(:,end),5)
