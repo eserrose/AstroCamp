@@ -1,10 +1,16 @@
+%------------------------------------------
+% Two-Body Propogator
+% 
+% @param ~ - Time step (unused)
+% @param S - Initial state vector [x y z vx vy vz]
+% @param mu - Gravitational parameter
 function ds = twobody(~, S, mu)    
     
-    r = []; % FILL IN VALUE
-    v = []; % FILL IN VALUE
+    r = S(1:3); % FILL IN VALUE
+    v = S(4:6); % FILL IN VALUE
     % defining position and velocity
     
-    a = []; % FILL IN VALUE
+    a = -mu/norm(r)^3*r; % FILL IN VALUE
     % solving for acceleration using two body motion
     
     ds = zeros(6,1); % [km/s; km/s^2]
