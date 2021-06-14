@@ -1,5 +1,5 @@
 %------------------------------------------
-% Two-Body Propogator
+% Three-Body Propogator
 % 
 % @param ~ - Time step (unused)
 % @param S - Initial state vector [x y z vx vy vz]

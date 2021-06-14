@@ -1,7 +1,7 @@
 function ds = CR3BP(~, S, u)
 
-    rspacecraft = S(1:3); % FILL IN VALUE
-    vspacecraft = S(4:6); % FILL IN VALUE
+    rspacecraft = S(1:3);
+    vspacecraft = S(4:6); 
     % defining position and velocity
     
     x = S(1); % FILL IN VALUE
@@ -13,10 +13,10 @@ function ds = CR3BP(~, S, u)
     % defining x y z components of position and velocity
     
     r13 = norm( [x; y; z] - [(-u); 0; 0] ); % FILL IN VALUE
-    % distance between space craft and Earth
+    % distance between spacecraft and Earth
     
     r23 = norm( [x; y; z] - [(1-u); 0; 0] ); % FILL IN VALUE
-    % distance between space craft and Moon
+    % distance between spacecraft and Moon
     
     xddot = 2*ydot+x-(1-u)/r13^3*(x+u)-u*(x-(1-u))/r23^3;
     yddot = y-2*xdot-(1-u)/r13^3*y-u/r23^3*y;
